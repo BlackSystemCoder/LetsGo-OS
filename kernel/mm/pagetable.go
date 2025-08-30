@@ -3,8 +3,8 @@ package mm
 import (
 	"unsafe"
 
-	"github.com/sanserogames/letsgo-os/kernel/log"
-	"github.com/sanserogames/letsgo-os/kernel/panic"
+	"github.com/blacksystemcoder/letsgo-os/kernel/log"
+	"github.com/blacksystemcoder/letsgo-os/kernel/panic"
 )
 
 const (

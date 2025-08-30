@@ -4,8 +4,8 @@ import (
 	"debug/elf"
 	"unsafe"
 
-	"github.com/sanserogames/letsgo-os/kernel/log"
-	"github.com/sanserogames/letsgo-os/kernel/mm"
+	"github.com/blacksystemcoder/letsgo-os/kernel/log"
+	"github.com/blacksystemcoder/letsgo-os/kernel/mm"
 )
 
 type auxVecEntry struct {

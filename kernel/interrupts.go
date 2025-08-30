@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/sanserogames/letsgo-os/kernel/log"
+	"github.com/blacksystemcoder/letsgo-os/kernel/log"
 )
 
 type IdtEntry struct {

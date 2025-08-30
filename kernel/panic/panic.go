@@ -6,5 +6,5 @@ import _ "unsafe"
 // to prevent cyclic import for packages that are used by the kernel package but
 // also would want to kernelPanic
 //
-//go:linkname KernelPanic github.com/sanserogames/letsgo-os/kernel.kernelPanic
+//go:linkname KernelPanic github.com/blacksystemcoder/letsgo-os/kernel.kernelPanic
 func KernelPanic(msg string)

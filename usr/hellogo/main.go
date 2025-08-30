@@ -20,10 +20,6 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	err = syscall.Exec("/usr/hellorust", []string{}, []string{})
-	if err != nil {
-		fmt.Println(err)
-	}
 	err = syscall.Exec("/usr/statx", []string{}, []string{})
 	if err != nil {
 		fmt.Println(err)

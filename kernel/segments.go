@@ -3,8 +3,8 @@ package kernel
 import (
 	"unsafe"
 
-	"github.com/sanserogames/letsgo-os/kernel/log"
-	"github.com/sanserogames/letsgo-os/kernel/mm"
+	"github.com/blacksystemcoder/letsgo-os/kernel/log"
+	"github.com/blacksystemcoder/letsgo-os/kernel/mm"
 )
 
 type GdtEntry struct {

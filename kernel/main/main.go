@@ -7,16 +7,14 @@ import (
 	"io"
 	"unsafe"
 
-	"github.com/sanserogames/letsgo-os/kernel"
-	"github.com/sanserogames/letsgo-os/kernel/log"
-	"github.com/sanserogames/letsgo-os/kernel/mm"
-	"github.com/sanserogames/letsgo-os/kernel/panic"
+	"github.com/blacksystemcoder/letsgo-os/kernel"
+	"github.com/blacksystemcoder/letsgo-os/kernel/log"
+	"github.com/blacksystemcoder/letsgo-os/kernel/mm"
+	"github.com/blacksystemcoder/letsgo-os/kernel/panic"
 )
 
 // This method will be linked in the kernel
 func main()
-
-
 
 var progs = [...]string{
 	// "/usr/cread",
@@ -35,7 +33,6 @@ var progs = [...]string{
 var debugWriters = []io.Writer{&kernel.SerialDevice}
 var errorWriters = []io.Writer{&kernel.SerialDevice, kernel.TextModeErrorWriter{}}
 var logWriters = []io.Writer{&kernel.SerialDevice, kernel.TextModeWriter{}}
-
 
 //go:linkname kmain main.main
 func kmain(info *kernel.MultibootInfo, stackstart uintptr, stackend uintptr) {

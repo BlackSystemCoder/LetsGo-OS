@@ -1,7 +1,7 @@
 package kernel
 
 import (
-	"github.com/sanserogames/letsgo-os/kernel/log"
+	"github.com/blacksystemcoder/letsgo-os/kernel/log"
 )
 
 // wrapper for do_kernelPanic that gets the return address

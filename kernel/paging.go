@@ -4,8 +4,8 @@ import (
 	"path"
 	"unsafe"
 
-	"github.com/sanserogames/letsgo-os/kernel/log"
-	"github.com/sanserogames/letsgo-os/kernel/mm"
+	"github.com/blacksystemcoder/letsgo-os/kernel/log"
+	"github.com/blacksystemcoder/letsgo-os/kernel/mm"
 )
 
 const (

@@ -75,7 +75,7 @@ go.o:
 	@# build/go.o is a elf32 object file but all Go symbols are unexported. Our
 	@# asm entrypoint code needs to know the address to 'main.main' and 'runtime.g0'
 	@# so we use objcopy to globalize them
-	@GOARCH=$(GOARCH) GOOS=$(GOOS) go build -o $(BUILD_DIR)/go.o -ldflags='-buildmode=c-archive' github.com/sanserogames/letsgo-os/kernel/main
+	@GOARCH=$(GOARCH) GOOS=$(GOOS) go build -o $(BUILD_DIR)/go.o -ldflags='-buildmode=c-archive' github.com/blacksystemcoder/letsgo-os/kernel/main
 	@echo "[objcopy] globalizing symbols {runtime.g0, main.main} in go.o"
 	@objcopy \
                 --globalize-symbol runtime.g0 \
@@ -108,17 +108,17 @@ $(disk_image):
 
 run: iso disk
 	qemu-system-i386 -d cpu_reset -no-reboot -cdrom $(iso_target) \
-		-hda $(disk_image) -boot order=dc -serial stdio
+		-hda $(disk_image) -boot order=dc -nographic
 
 run-interrupt: iso disk
 	qemu-system-i386 -d int,cpu_reset -no-reboot -cdrom $(iso_target) \
-		-hda $(disk_image) -boot order=dc
+		-hda $(disk_image) -boot order=dc -nographic
 
 # When building gdb target disable optimizations (-N) and inlining (l) of Go code
 gdb: GC_FLAGS += -N -l
 gdb: iso disk
 	qemu-system-i386 -d int,cpu_reset -s -S -cdrom $(iso_target) \
-		-hda $(disk_image) -boot order=dc &
+		-hda $(disk_image) -boot order=dc -nographic &
 	sleep 1
 	echo $(GOROOT)
 	gdb \

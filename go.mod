@@ -1,3 +1,3 @@
-module github.com/sanserogames/letsgo-os
+module github.com/blacksystemcoder/letsgo-os
 
 go 1.21

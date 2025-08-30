@@ -1,6 +1,6 @@
 package kernel
 
-import "github.com/sanserogames/letsgo-os/kernel/mm"
+import "github.com/blacksystemcoder/letsgo-os/kernel/mm"
 
 type Domain struct {
 	next *Domain

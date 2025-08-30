@@ -4,7 +4,7 @@ import (
 	"path"
 	"unsafe"
 
-	"github.com/sanserogames/letsgo-os/kernel/log"
+	"github.com/blacksystemcoder/letsgo-os/kernel/log"
 )
 
 const ENABLE_DEBUG = false
