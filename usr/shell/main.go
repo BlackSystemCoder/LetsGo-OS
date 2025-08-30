@@ -9,7 +9,7 @@ import (
 	"unsafe"
 )
 
-func exit_shell(){
+func exit_shell() {
 	fmt.Println("")
 	os.Exit(0)
 }
@@ -72,22 +72,38 @@ func main() {
 			continue
 		}
 
-		if bytes.EqualFold(line, []byte("exit")) {
+		fields := bytes.Fields(line)
+		if len(fields) == 0 {
+			continue
+		}
+
+		cmd := fields[0]
+		if bytes.EqualFold(cmd, []byte("exit")) {
 			exit_shell()
 		}
 
-		if line[0] != '/' {
-			line = append([]byte("/usr/"), line...)
+		var binPath []byte
+		if cmd[0] != '/' {
+			binPath = append([]byte("/usr/"), cmd...)
+		} else {
+			binPath = cmd
 		}
 
+		argv := make([]uintptr, len(fields)+1)
+		argv[0] = uintptr(unsafe.Pointer(&binPath[0]))
+		for i := 1; i < len(fields); i++ {
+			argv[i] = uintptr(unsafe.Pointer(&fields[i][0]))
+		}
+		argv[len(fields)] = 0 // null-terminated
+
 		r, _, _ := syscall.RawSyscall(syscall.SYS_EXECVE,
-			uintptr(unsafe.Pointer(&line[0])),
-			uintptr(unsafe.Pointer(nil)),
+			uintptr(unsafe.Pointer(&binPath[0])),
+			uintptr(unsafe.Pointer(&argv[0])),
 			uintptr(unsafe.Pointer(nil)))
 
 		pid := int(r)
 		if pid <= 0 {
-			fmt.Printf("Command not found: %s\n", line)
+			fmt.Printf("Command not found: %s\n", binPath)
 		} else {
 			syscall.Wait4(pid, nil, 0, nil)
 		}
